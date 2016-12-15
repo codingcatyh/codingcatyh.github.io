@@ -316,11 +316,11 @@
           
             <p>ANR全名：Application Not Responding，即应用无响应。</p>
 <hr>
-<p>##出现场景<br>1、KeyDispatchTimeout（5 seconds）主要类型按键或触摸时间在特定时间内无相应<br>2、BroadcastTimeout（10 seconds）BroadcastReceiver在特定时间内无法完成<br>3、ServiceTimeout（20 seconds）小概率类型Service在特定的时间内无法处理完成</p>
+<h2 id="出现场景"><a href="#出现场景" class="headerlink" title="出现场景"></a>出现场景</h2><p>1、KeyDispatchTimeout（5 seconds）主要类型按键或触摸时间在特定时间内无相应<br>2、BroadcastTimeout（10 seconds）BroadcastReceiver在特定时间内无法完成<br>3、ServiceTimeout（20 seconds）小概率类型Service在特定的时间内无法处理完成</p>
 <hr>
 <h2 id="如何避免"><a href="#如何避免" class="headerlink" title="如何避免"></a>如何避免</h2><p>1、更改IO放在主线程中内处理，更改IO的逻辑放在子线程中<br>2、使用handler处理工作线程的结果，而不是使用Thread.wait()作者Thread.sleep()来阻塞线程<br>3、BroadcastReceiver中onReceive代码尽量减少耗时，建议使用IntentService处理</p>
 <hr>
-<p>##优化处理<br>通常100到200毫秒就会让人察觉程序反应慢，为了更加提升响应，可以使用一下的方法</p>
+<h2 id="优化处理"><a href="#优化处理" class="headerlink" title="优化处理"></a>优化处理</h2><p>通常100到200毫秒就会让人察觉程序反应慢，为了更加提升响应，可以使用一下的方法</p>
 <p>1、当程序在后台处理用户操作时，可以使用进度条<br>2、程序启动可以选择加上欢迎界面，避免让用户察觉卡顿<br>3、使用Systrace和TraceView找到影响响应的问题</p>
 <p>参考资料：技术小黑屋</p>
 
