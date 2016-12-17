@@ -236,6 +236,264 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/17/android-bitmap-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Hao">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yanhao's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Yanhao's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/17/android-bitmap-1/" itemprop="url">
+                  android-bitmap(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-17T15:19:21+08:00">
+                2016-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文涉及：图片来源、图片处理、</p>
+<hr>
+<h3 id="图片来源：BitmapFactory"><a href="#图片来源：BitmapFactory" class="headerlink" title="图片来源：BitmapFactory"></a>图片来源：BitmapFactory</h3><p>在android中，提供了BitmapFactory类，用作于从不同数据源解析、创建提供Bitmap对象。（Creates Bitmap objects from various sources , including files, strems, and byte-arrays）</p>
+<h4 id="提供的方法"><a href="#提供的方法" class="headerlink" title="提供的方法"></a>提供的方法</h4><pre><code>static Bitmap decodeByteArray(byte[] date,int offset,int length);
+static Bitmap decodeByteArray(byte[] date,int offset,int length,BitmapFactory.Option opts);
+static Bitmap decodeFile(String pathName);
+static Bitmap decodeFile(String pathName,BitmapFactory.Option opts);
+static Bitmap decodeFileDescriptor(FileDescriptor fd) ;
+static Bitmap decodeFileDescriptor(FileDescriptor fd, Rect outPadding, BitmapFactory.Options opts);
+static Bitmap decodeResource(Resources res, int id, BitmapFactory.Options opts) ;
+static Bitmap decodeResource(Resources res, int id) ;
+static Bitmap decodeResourceStream(Resources res, TypedValue value, InputStream is, Rect pad, BitmapFactory.Options opts);
+static Bitmap decodeStream(InputStream is);
+static Bitmap decodeStream(InputStream is, Rect outPadding, BitmapFactory.Options opts);
+</code></pre><hr>
+<h3 id="通过BitmapFactory-Option对产生的bitmap进行限定"><a href="#通过BitmapFactory-Option对产生的bitmap进行限定" class="headerlink" title="通过BitmapFactory.Option对产生的bitmap进行限定"></a>通过BitmapFactory.Option对产生的bitmap进行限定</h3><p>1、首先获得一个BitmapFactory.Option对象</p>
+<pre><code>BitmapFactory.Option opts=new BitmapFactory.Option();
+</code></pre><p>2、对opts的属性进行设置</p>
+<pre><code>//例如：
+opts.inJustDecodeBounds=true;
+</code></pre><p> 3、在获得bitmap对象时将参数opts传进去</p>
+<pre><code>Bitmap bitmap=BitmapFactory.decodeStream(XXXX,XXXX,opts);
+</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>inJustDecodeBounds: 如果值为true，那么将不返回实际的bitmap，也不给其分配内存空间，这样就避免了内存的溢出。但是允许我们查询图片的信息，这其中就包括了图片的大小信息。</p>
+<p>inSampleSize: 可以利用它，实现缩放。如果设置为&gt;1，要求解码器解码出原始图片的一个子样本，返回一个较小的bitmap，以节省空间。例如，inSampleSize=2，那么得到的缩略图宽和高都是原始图片的1/2，图片的大小是原始图片的1/4.对于任意值&lt;=1都当成1来处理。</p>
+<p>inPreferredConfig：设置解码方法，解码方式不同在内存中所占用的大小也不相同。一共有四种解码方法：ARGB_8888、ARGB_565、ARGB_4444、ALPHA_8.后面的数字位数代表的是通道数，数字大小是指该通道占的位数，所有通道占的位数和表示以该方式解码后的bitmap一个像素所占的内存大小。</p>
+<p>未完待续….</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/16/xmlns-android中的命名空间/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Yan Hao">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yanhao's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Yanhao's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/16/xmlns-android中的命名空间/" itemprop="url">
+                  xmlns-android中的命名空间
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-16T18:17:00+08:00">
+                2016-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/15/android中的ANR/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -393,7 +651,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -84,22 +84,25 @@
 
 
 
-<meta name="description" content="ANR全名：Application Not Responding，即应用无响应。
+<meta name="description" content="本文涉及：图片来源、图片处理、
 
-出现场景1、KeyDispatchTimeout（5 seconds）主要类型按键或触摸时间在特定时间内无相应2、BroadcastTimeout（10 seconds）BroadcastReceiver在特定时间内无法完成3、ServiceTimeout（20 seconds）小概率类型Service在特定的时间">
+图片来源：BitmapFactory在android中，提供了BitmapFactory类，用作于从不同数据源解析、创建提供Bitmap对象。（Creates Bitmap objects from various sources , including files, strems, and byte-arrays）
+提供的方法static Bitmap deco">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android中的ANR">
-<meta property="og:url" content="http://yoursite.com/2016/12/15/android中的ANR/index.html">
+<meta property="og:title" content="android-bitmap(1)">
+<meta property="og:url" content="http://yoursite.com/2016/12/17/android-bitmap-1/index.html">
 <meta property="og:site_name" content="Yanhao's blog">
-<meta property="og:description" content="ANR全名：Application Not Responding，即应用无响应。
+<meta property="og:description" content="本文涉及：图片来源、图片处理、
 
-出现场景1、KeyDispatchTimeout（5 seconds）主要类型按键或触摸时间在特定时间内无相应2、BroadcastTimeout（10 seconds）BroadcastReceiver在特定时间内无法完成3、ServiceTimeout（20 seconds）小概率类型Service在特定的时间">
-<meta property="og:updated_time" content="2016-12-15T11:57:56.234Z">
+图片来源：BitmapFactory在android中，提供了BitmapFactory类，用作于从不同数据源解析、创建提供Bitmap对象。（Creates Bitmap objects from various sources , including files, strems, and byte-arrays）
+提供的方法static Bitmap deco">
+<meta property="og:updated_time" content="2016-12-17T08:19:16.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android中的ANR">
-<meta name="twitter:description" content="ANR全名：Application Not Responding，即应用无响应。
+<meta name="twitter:title" content="android-bitmap(1)">
+<meta name="twitter:description" content="本文涉及：图片来源、图片处理、
 
-出现场景1、KeyDispatchTimeout（5 seconds）主要类型按键或触摸时间在特定时间内无相应2、BroadcastTimeout（10 seconds）BroadcastReceiver在特定时间内无法完成3、ServiceTimeout（20 seconds）小概率类型Service在特定的时间">
+图片来源：BitmapFactory在android中，提供了BitmapFactory类，用作于从不同数据源解析、创建提供Bitmap对象。（Creates Bitmap objects from various sources , including files, strems, and byte-arrays）
+提供的方法static Bitmap deco">
 
 
 
@@ -127,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/15/android中的ANR/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/17/android-bitmap-1/"/>
 
 
 
 
 
-  <title> android中的ANR | Yanhao's blog </title>
+  <title> android-bitmap(1) | Yanhao's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -244,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/15/android中的ANR/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/17/android-bitmap-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Yan Hao">
@@ -268,7 +271,7 @@
             
             
               
-                android中的ANR
+                android-bitmap(1)
               
             
           </h1>
@@ -281,8 +284,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T19:28:31+08:00">
-                2016-12-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-17T15:19:21+08:00">
+                2016-12-17
               </time>
             
 
@@ -317,15 +320,32 @@
       
 
       
-        <p>ANR全名：Application Not Responding，即应用无响应。</p>
+        <p>本文涉及：图片来源、图片处理、</p>
 <hr>
-<h2 id="出现场景"><a href="#出现场景" class="headerlink" title="出现场景"></a>出现场景</h2><p>1、KeyDispatchTimeout（5 seconds）主要类型按键或触摸时间在特定时间内无相应<br>2、BroadcastTimeout（10 seconds）BroadcastReceiver在特定时间内无法完成<br>3、ServiceTimeout（20 seconds）小概率类型Service在特定的时间内无法处理完成</p>
-<hr>
-<h2 id="如何避免"><a href="#如何避免" class="headerlink" title="如何避免"></a>如何避免</h2><p>1、更改IO放在主线程中内处理，更改IO的逻辑放在子线程中<br>2、使用handler处理工作线程的结果，而不是使用Thread.wait()作者Thread.sleep()来阻塞线程<br>3、BroadcastReceiver中onReceive代码尽量减少耗时，建议使用IntentService处理</p>
-<hr>
-<h2 id="优化处理"><a href="#优化处理" class="headerlink" title="优化处理"></a>优化处理</h2><p>通常100到200毫秒就会让人察觉程序反应慢，为了更加提升响应，可以使用一下的方法</p>
-<p>1、当程序在后台处理用户操作时，可以使用进度条<br>2、程序启动可以选择加上欢迎界面，避免让用户察觉卡顿<br>3、使用Systrace和TraceView找到影响响应的问题</p>
-<p>参考资料：技术小黑屋</p>
+<h3 id="图片来源：BitmapFactory"><a href="#图片来源：BitmapFactory" class="headerlink" title="图片来源：BitmapFactory"></a>图片来源：BitmapFactory</h3><p>在android中，提供了BitmapFactory类，用作于从不同数据源解析、创建提供Bitmap对象。（Creates Bitmap objects from various sources , including files, strems, and byte-arrays）</p>
+<h4 id="提供的方法"><a href="#提供的方法" class="headerlink" title="提供的方法"></a>提供的方法</h4><pre><code>static Bitmap decodeByteArray(byte[] date,int offset,int length);
+static Bitmap decodeByteArray(byte[] date,int offset,int length,BitmapFactory.Option opts);
+static Bitmap decodeFile(String pathName);
+static Bitmap decodeFile(String pathName,BitmapFactory.Option opts);
+static Bitmap decodeFileDescriptor(FileDescriptor fd) ;
+static Bitmap decodeFileDescriptor(FileDescriptor fd, Rect outPadding, BitmapFactory.Options opts);
+static Bitmap decodeResource(Resources res, int id, BitmapFactory.Options opts) ;
+static Bitmap decodeResource(Resources res, int id) ;
+static Bitmap decodeResourceStream(Resources res, TypedValue value, InputStream is, Rect pad, BitmapFactory.Options opts);
+static Bitmap decodeStream(InputStream is);
+static Bitmap decodeStream(InputStream is, Rect outPadding, BitmapFactory.Options opts);
+</code></pre><hr>
+<h3 id="通过BitmapFactory-Option对产生的bitmap进行限定"><a href="#通过BitmapFactory-Option对产生的bitmap进行限定" class="headerlink" title="通过BitmapFactory.Option对产生的bitmap进行限定"></a>通过BitmapFactory.Option对产生的bitmap进行限定</h3><p>1、首先获得一个BitmapFactory.Option对象</p>
+<pre><code>BitmapFactory.Option opts=new BitmapFactory.Option();
+</code></pre><p>2、对opts的属性进行设置</p>
+<pre><code>//例如：
+opts.inJustDecodeBounds=true;
+</code></pre><p> 3、在获得bitmap对象时将参数opts传进去</p>
+<pre><code>Bitmap bitmap=BitmapFactory.decodeStream(XXXX,XXXX,opts);
+</code></pre><h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>inJustDecodeBounds: 如果值为true，那么将不返回实际的bitmap，也不给其分配内存空间，这样就避免了内存的溢出。但是允许我们查询图片的信息，这其中就包括了图片的大小信息。</p>
+<p>inSampleSize: 可以利用它，实现缩放。如果设置为&gt;1，要求解码器解码出原始图片的一个子样本，返回一个较小的bitmap，以节省空间。例如，inSampleSize=2，那么得到的缩略图宽和高都是原始图片的1/2，图片的大小是原始图片的1/4.对于任意值&lt;=1都当成1来处理。</p>
+<p>inPreferredConfig：设置解码方法，解码方式不同在内存中所占用的大小也不相同。一共有四种解码方法：ARGB_8888、ARGB_565、ARGB_4444、ALPHA_8.后面的数字位数代表的是通道数，数字大小是指该通道占的位数，所有通道占的位数和表示以该方式解码后的bitmap一个像素所占的内存大小。</p>
+<p>未完待续….</p>
 
       
     </div>
@@ -352,15 +372,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/16/xmlns-android中的命名空间/" rel="next" title="xmlns-android中的命名空间">
+                <i class="fa fa-chevron-left"></i> xmlns-android中的命名空间
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/16/xmlns-android中的命名空间/" rel="prev" title="xmlns-android中的命名空间">
-                xmlns-android中的命名空间 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,7 +486,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#出现场景"><span class="nav-number">1.</span> <span class="nav-text">出现场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何避免"><span class="nav-number">2.</span> <span class="nav-text">如何避免</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化处理"><span class="nav-number">3.</span> <span class="nav-text">优化处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片来源：BitmapFactory"><span class="nav-number">1.</span> <span class="nav-text">图片来源：BitmapFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提供的方法"><span class="nav-number">1.1.</span> <span class="nav-text">提供的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过BitmapFactory-Option对产生的bitmap进行限定"><span class="nav-number">2.</span> <span class="nav-text">通过BitmapFactory.Option对产生的bitmap进行限定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">2.1.</span> <span class="nav-text">常用方法</span></a></li></ol></li></ol></div>
             
 
           </div>
